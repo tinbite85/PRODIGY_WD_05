@@ -5,15 +5,17 @@ document.getElementById('weather-form').addEventListener('submit', function(even
 });
 
 function getWeather(city) {
-    const apiKey = '9a90add5fae14a1ebee74018242206'; // Replace with your OpenWeatherMap API key
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    const apiKey = '9a90add5fae14a1ebee74018242206';
+    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+
 
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            if (data.cod === 200) {
-                document.getElementById('city-name').innerText = data.name;
-                document.getElementById('temperature').innerText = `Temperature: ${data.main.temp} °C`;
+            console.log("data", data);
+            if (data.location) {
+                document.getElementById('city-name').innerText = data.location.name;
+                document.getElementById('temperature').innerText = `Temperature: ${data.current.temp_c} °C`;
                 document.getElementById('description').innerText = `Description: ${data.weather[0].description}`;
                 document.getElementById('icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
                 document.getElementById('weather-result').style.display = 'block';
