@@ -16,8 +16,8 @@ function getWeather(city) {
             if (data.location) {
                 document.getElementById('city-name').innerText = data.location.name;
                 document.getElementById('temperature').innerText = `Temperature: ${data.current.temp_c} °C`;
-                document.getElementById('description').innerText = `Description: ${data.weather[0].description}`;
-                document.getElementById('icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+                // document.getElementById('description').innerText = `Description: ${data.weather[0].description}`;
+                // document.getElementById('icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
                 document.getElementById('weather-result').style.display = 'block';
             } else {
                 alert('City not found. Please try again.');
